@@ -1,5 +1,6 @@
 let Kingdoms = require('../Models/kingdom')
 let Knights = require('../Models/knight')
+let Quests = require('../Models/quest')
 let router = require('express').Router()
 
 router.get('', (req, res, next) => {
@@ -16,16 +17,16 @@ router.get('/:id', (req, res, next) => {
 })
 
 router.get('/:id/knights', (req, res, next) => {
-  Knights.find({ kingdom: req.params.id })
+  Knights.find({ kingdom: req.params.id }).populate('kingdom')
     .then(knights => res.send(knights))
     .catch(err => res.status(400).send(err))
 })
 
-// router.get('/:id/quests', (req, res, next) => {
-//   Knights.find({ kingdom: req.params.id })
-//     .then(knights => res.send(knights))
-//     .catch(err => res.status(400).send(err))
-// })
+router.get('/:id/quests', (req, res, next) => {
+  Quests.find({ kingdom: req.params.id })
+    .then(quests => res.send(quests))
+    .catch(err => res.status(400).send(err))
+})
 
 router.post('', (req, res, next) => {
   Kingdoms.create(req.body)

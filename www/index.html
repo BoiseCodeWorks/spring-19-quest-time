@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Kingdom Builder</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+  <div id="kingdoms"></div>
+  <div id="kingdom" class="hidden">
+    <h2 id="kingdom-name"></h2>
+    <hr>
+    <div id="active-quest"></div>
+    <hr>
+    <div>
+      <h4>Quests</h4>
+      <form class="form" onsubmit="app.controllers.kingdomController.createQuest(event)">
+        <legend>New Quest</legend>
+        <div>
+          <label for="name">Name:</label>
+          <input type="text" name="name">
+        </div>
+        <div>
+          <label for="description">Description:</label>
+          <textarea type="text" name="description"></textarea>
+        </div>
+        <button>Create Quest</button>
+      </form>
+      <ul id="quests"></ul>
+    </div>
+    <div>
+      <h4>Knights</h4>
+      <ul id="knights"></ul>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+  <script type="module" src="./app/main.js"></script>
+</body>
+
+</html>

@@ -21,13 +21,18 @@ router.post('', (req, res, next) => {
     .catch(err => res.status(400).send(err))
 })
 
-router.put("/:id", async (req, res, next) => {
-  try {
-    let knight = await Knights.findByIdAndUpdate(req.params.id, req.body, { new: true })
-    res.send(knight)
-  } catch (err) {
-    res.status(400).send(err)
-  }
+// router.put("/:id", async (req, res, next) => {
+//   try {
+//     let knight = await Knights.findByIdAndUpdate(req.params.id, req.body, { new: true })
+//     res.send(knight)
+//   } catch (err) {
+//     res.status(400).send(err)
+//   }
+// })
+
+router.put("/:id/quests", (req, res, next) => {
+  Knights.findByIdAndUpdate(req.params.id, { $set: { quests: req.body.quests } }, { new: true })
+    .then(knight => res.send(knight))
 })
 
 router.delete("/:id", (req, res, next) => {

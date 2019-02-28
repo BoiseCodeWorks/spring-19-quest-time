@@ -1,0 +1,12 @@
+.action{
+  cursor: pointer;
+  opacity: .8;
+  transition:all .15s linear;
+}
+.action:hover{
+  opacity: 1;
+}
+
+.hidden{
+  display: none;
+}
